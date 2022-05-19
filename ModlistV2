@@ -1,0 +1,41 @@
+MODS = {
+    [2266148679] = true; 
+}
+
+CROWN = {}
+
+DIAMOND = {}
+
+--// Don't mess with anything below this
+function initiateNames()
+for _,v in pairs(game:GetService('Players'):GetChildren()) do
+		if MODS[v.UserId] then
+			if v.Character then
+				if v.Character.Parent.Name == 'Players' then
+					v.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[⭐]'..v.DisplayName)
+				end
+			end
+		elseif CROWN[v.UserId] then
+			if v.Character then
+				if v.Character.Parent.Name == 'Players' then
+					v.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[👑]'..v.DisplayName)
+				end
+			end
+		elseif DIAMOND[v.UserId] then
+			if v.Character then
+				if v.Character.Parent.Name == 'Players' then
+					v.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[💎]'..v.DisplayName)
+				end
+			end
+		elseif v.Character then
+			if v.Character.Parent.Name == 'Players' then
+				if not v.Character.UpperTorso:FindFirstChild('BodyBackAttachment') then
+					v.Character:FindFirstChildWhichIsA('Humanoid').DisplayName = ('[😉]'..v.DisplayName)
+				end
+			end
+		end
+	end
+end
+
+local successful, errored = pcall(initiateNames)
+return MODS
